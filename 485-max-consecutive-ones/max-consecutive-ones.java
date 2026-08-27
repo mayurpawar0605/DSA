@@ -3,12 +3,6 @@ class Solution {
         int n = nums.length;
         int count = 0;
         int maxCount = 0;
-
-        //handling case where only single element present in array itha 1
-        if(n == 1 && nums[0] == 1){
-            return 1;
-        }
-
         int i = 0;
         int j = 0;
         while(j < n){
