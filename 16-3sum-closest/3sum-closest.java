@@ -21,8 +21,14 @@ class Solution {
 
                 if(sum < target){
                     j++;
+                    while(j < k && nums[j] == nums[j-1]){
+                        j++;
+                    }
                 }else if(sum > target){
                     k--;
+                    while(k > j && nums[k] == nums[k + 1]){
+                        k--;
+                    }
                 }else{
                     return sum;  // exact match
                 }
