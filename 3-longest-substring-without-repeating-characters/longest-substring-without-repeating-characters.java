@@ -21,45 +21,44 @@ class Solution {
         // return maxLen;
 
         
-        // HashMap<Character,Integer> map = new HashMap<>();
-        
-        // int l = 0;
-        // int r = 0;
-        // while (r < n){
-        //     char ch = s.charAt(r);
-        //     //if character repeats
-        //     if(map.containsKey(ch)){
-        //         //check for char repeats inside substring 
-        //         //repeated char index is greater than l -> update it
-        //         if(map.get(ch) >= l){
-        //             //we need to update it 
-        //             l = map.get(ch) + 1;
-        //         }   
-        //     }
-        //     int length = r - l + 1;
-        //         maxLen = Math.max(length,maxLen);
-
-        //         //add current charater with current index in map
-        //         map.put(ch,r);
-        //         //check for nex character 
-        //         r++;
-        // }
-
-        int i = 0;
-        int j = 0;
-        HashSet<Character> set = new HashSet<>();
-        while(j < n){
-            char ch = s.charAt(j);
-            if(set.contains(ch)){
-                while(set.contains(ch)){
-                    set.remove(s.charAt(i));
-                    i++;
-                }
+        HashMap<Character,Integer> map = new HashMap<>();
+        int l = 0;
+        int r = 0;
+        while (r < n){
+            char ch = s.charAt(r);
+            //if character repeats
+            if(map.containsKey(ch)){
+                //check for char repeats inside substring 
+                //repeated char index is greater than l -> update it
+                if(map.get(ch) >= l){
+                    //we need to update it 
+                    l = map.get(ch) + 1;
+                }   
             }
-            maxLen = Math.max(maxLen , j - i + 1);
-            set.add(s.charAt(j));
-            j++;
+            int length = r - l + 1;
+                maxLen = Math.max(length,maxLen);
+
+                //add current charater with current index in map
+                map.put(ch,r);
+                //check for nex character 
+                r++;
         }
+
+        // int i = 0;
+        // int j = 0;
+        // HashSet<Character> set = new HashSet<>();
+        // while(j < n){
+        //     char ch = s.charAt(j);
+        //     if(set.contains(ch)){
+        //         while(set.contains(ch)){
+        //             set.remove(s.charAt(i));
+        //             i++;
+        //         }
+        //     }
+        //     maxLen = Math.max(maxLen , j - i + 1);
+        //     set.add(s.charAt(j));
+        //     j++;
+        // }
         return maxLen;
     }
 }
