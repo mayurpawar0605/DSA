@@ -13,10 +13,14 @@ class Solution {
         for(int i = 0; i < t.length();i++){
             char ch = t.charAt(i);
             if(map.containsKey(ch)){
-                map.replace(ch,map.get(ch) - 1);
-                if(map.get(ch) == 0){
+                
+                int count = map.get(ch) - 1;
+
+                if (count == 0) {
                     map.remove(ch);
-                } 
+                } else {
+                map.put(ch, count);
+               } 
             }
             else{
                 return false;
