@@ -22,6 +22,7 @@ class Solution {
             curr = forward;
 
         }
-        return prev;
+        head = prev;
+        return head;
     }
 }
