@@ -72,15 +72,17 @@ class Solution {
 
         while(r < n){
             char ch = s.charAt(r);
-            map.put(ch,map.getOrDefault(ch,0) + 1);
-
-            while(map.get(ch) > 1){
-                char last = s.charAt(l);
-                map.replace(last,map.get(last) - 1);
-                l++;
+            
+            if(map.containsKey(ch)){
+                if(map.get(ch) >= l){
+                    //we need to update it 
+                    l = map.get(ch) + 1;
+                }
             }
 
             MaxLen = Math.max(MaxLen, r-l+1);
+
+            map.put(ch,r);
             r++;
         }
         return MaxLen;
