@@ -1,6 +1,6 @@
 class Solution {
     public List<List<String>> groupAnagrams(String[] strs) {
-        HashMap<String,List<String>> map = new HashMap<>();
+        // HashMap<String,List<String>> map = new HashMap<>();
 
         // for(String s : strs){
         //     char[] arr = s.toCharArray();
@@ -16,22 +16,25 @@ class Solution {
         // }
         // return new ArrayList<>(map.values());
 
+        HashMap<String,List<String>> map = new HashMap<>();
+
         for(String s : strs){
             int[] arr = new int[26];
 
             for(int i=0; i<s.length();i++){
                 arr[s.charAt(i) - 'a']++;
             }
-            String code = "";
+            StringBuilder code = new StringBuilder();
             for(int i=0; i <26;i++){
-                code = code + '#';
-                code = code + arr[i];
+                code.append('#');
+                code.append(arr[i]);
             }
 
-            if(!map.containsKey(code)){
-                map.put(code,new ArrayList<>());
+            String codee = code.toString();
+            if(!map.containsKey(codee)){
+                map.put(codee,new ArrayList<>());
             }
-            map.get(code).add(s);
+            map.get(codee).add(s);
         }
 
         return new ArrayList<>(map.values());
