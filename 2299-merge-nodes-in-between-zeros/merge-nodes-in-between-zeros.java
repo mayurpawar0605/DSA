@@ -10,6 +10,8 @@
  */
 class Solution {
     public ListNode mergeNodes(ListNode head) {
+        /*
+
         ListNode write = head;
         ListNode read = head.next;
 
@@ -29,5 +31,28 @@ class Solution {
             write = write.next;
         }
         return head;
+        */
+
+        ListNode temp = head.next;
+        int sum = 0;
+        ListNode newHead = null;
+        ListNode newTail = null;
+        while(temp != null){
+            if(temp.val != 0){
+                sum += temp.val;
+            }else{
+                ListNode newNode = new ListNode(sum);
+                if(newHead == null){
+                    newHead = newNode;
+                    newTail = newNode;
+                }else{
+                    newTail.next =  newNode;
+                    newTail = newTail.next;
+                }
+                sum = 0;
+            }
+            temp = temp.next;
+        }
+        return newHead;
     }
 }
