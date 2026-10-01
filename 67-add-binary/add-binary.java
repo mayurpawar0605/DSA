@@ -12,18 +12,10 @@ class Solution {
             int numA = a.charAt(i) - '0';
             int numB = b.charAt(j) - '0';
 
-            int currNum = carry + numA + numB;
+            int sum =  carry + numA + numB;
+            ans.insert(0,sum % 2);
+            carry = sum / 2;
 
-            if(currNum < 2){
-                if(currNum == 1) ans.insert(0,'1');
-                if(currNum == 0) ans.insert(0,'0');
-                carry = 0;
-            }else{
-                // ans is 2 or greater than 2
-                if(currNum == 2) ans.insert(0,'0');
-                if(currNum == 3) ans.insert(0,'1');
-                carry = 1;
-            }
             i--;
             j--;
         }
@@ -31,33 +23,17 @@ class Solution {
         //if a gets empty
         while(i >= 0){
             int numA = a.charAt(i) - '0';
-            int currNum = numA + carry;
-            if(currNum < 2){
-                if(currNum == 1) ans.insert(0,'1');
-                if(currNum == 0) ans.insert(0,'0');
-                carry = 0;
-            }else{
-                // ans is 2 or greater than 2
-                if(currNum == 2) ans.insert(0,'0');
-                if(currNum == 3) ans.insert(0,'1');
-                carry = 1; 
-            }
+            int sum =  carry + numA;
+            ans.insert(0,sum % 2);
+            carry = sum / 2;
             i--;
         }
         //if b gets empty
          while(j >= 0){
             int numB = b.charAt(j) - '0';
-            int currNum = numB + carry;
-            if(currNum < 2){
-                if(currNum == 1) ans.insert(0,'1');
-                if(currNum == 0) ans.insert(0,'0');
-                carry = 0;
-            }else{
-                // ans is 2 or greater than 2
-                if(currNum == 2) ans.insert(0,'0');
-                if(currNum == 3) ans.insert(0,'1');
-                carry = 1; 
-            }
+            int sum =  carry + numB;
+            ans.insert(0,sum % 2);
+            carry = sum / 2;
             j--;
         }
 
