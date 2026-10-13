@@ -4,6 +4,8 @@ class Solution {
         if(index >= nums.length){
             //subsequence is ready in output
             //strore that in ans 
+            //we have to addd copy of output in ans 
+            //we can`t add same output referance every time
             ans.add(new ArrayList<>(output));
             return;
         }
@@ -13,10 +15,11 @@ class Solution {
         output.add(currValue);
         solve(nums, index + 1, output, ans);
 
-        //backtracking -> we need to remove currentValue form output for exclude case 
+        //BACKTRACKING -> 
+        //we need to remove currentValue form output for exclude case 
         output.remove(output.size() - 1);
 
-        //befor excluding we need to remove -> duplucate value that is already excluded
+        //before excluding we need to remove -> duplucate value that is already excluded
         //that gives all unique subsets
         //it is only apply when the array is soretd 
         //we need to sort array 
