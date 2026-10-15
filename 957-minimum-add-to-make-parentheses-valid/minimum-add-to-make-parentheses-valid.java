@@ -1,0 +1,19 @@
+class Solution {
+    public int minAddToMakeValid(String s) {
+        int count = 0;
+        Deque<Character> st = new ArrayDeque<>();
+
+        for(char ch: s.toCharArray()){
+            if(ch == '('){
+                st.push(ch);
+            }else{
+                if(st.isEmpty()){
+                    count++;
+                }else{
+                    st.pop();
+                }
+            }
+        }
+        return count + st.size();
+    }
+}
