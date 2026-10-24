@@ -14,23 +14,24 @@ class Solution {
         return true;
     }
     public boolean rotateString(String s, String goal) {
-        if(s.length() != goal.length()){
-            return false;
-        }
-        
-        int i = 0;
-        int j = 0;
+        // if(s.length() != goal.length()){
+        //     return false;
+        // }
 
-        while(i < s.length()){
-            if(s.charAt(i) == goal.charAt(j)){
-                if(check(s,goal,i,j)){
-                    return true;
-                }
-            }
-            i++;
-        }
+        // int i = 0;
+        // int j = 0;
 
-        return false;
+        // while(i < s.length()){
+        //     if(s.charAt(i) == goal.charAt(j)){
+        //         if(check(s,goal,i,j)){
+        //             return true;
+        //         }
+        //     }
+        //     i++;
+        // }
+        // return false;
+
+        return s.length() == goal.length() && (s + s).contains(goal);
         
     }
 }
