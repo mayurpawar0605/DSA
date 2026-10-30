@@ -1,6 +1,57 @@
 class Solution {
     public String removeKdigits(String num, int k) {
         
+        // int n = num.length();
+
+        // if (k == 0){
+        //     return num;
+        // }
+        // if(k == n){
+        //     return "0";
+        // }
+
+        // Deque<Character> st = new ArrayDeque<>();
+
+        // int i =0;
+
+        // for(char ch : num.toCharArray()){
+            
+        //     //monotic stack pattern
+        //     while(!st.isEmpty() && k > 0 &&  st.peek() > ch){
+        //         st.pop();
+        //         k--;
+        //     }
+        //     st.push(ch);
+        // }
+
+        // //if K > 0 - removals are pending
+        // while(k > 0){
+        //     st.pop();
+        //     k--;
+        // }
+
+        // //build your ans ,reverse it ,remove leading 0`s
+        // StringBuilder ans = new StringBuilder();
+        // while(!st.isEmpty()){
+        //     ans.append(st.pop());
+        // }
+
+        // ans.reverse();
+
+        // // handling leading 0`s
+        // int index = 0;
+        // while(index < ans.length() && ans.charAt(index) == '0'){
+        //     index ++;
+        // }
+
+        // String result = ans.substring(index);
+        // if(result.length() == 0){
+        //     return "0";
+        // }else{
+        //     return result;
+        // }
+
+
         int n = num.length();
 
         if (k == 0){
@@ -10,33 +61,33 @@ class Solution {
             return "0";
         }
 
-        Deque<Character> st = new ArrayDeque<>();
+        StringBuilder ans = new StringBuilder();
 
         int i =0;
 
         for(char ch : num.toCharArray()){
             
             //monotic stack pattern
-            while(!st.isEmpty() && k > 0 &&  st.peek() > ch){
-                st.pop();
+            while(ans.length() > 0 && k > 0 &&  ans.charAt(ans.length() - 1) > ch){
+                ans.deleteCharAt(ans.length() - 1);
                 k--;
             }
-            st.push(ch);
+            ans.append(ch);
         }
 
         //if K > 0 - removals are pending
         while(k > 0){
-            st.pop();
+            ans.deleteCharAt(ans.length() - 1);
             k--;
         }
 
         //build your ans ,reverse it ,remove leading 0`s
-        StringBuilder ans = new StringBuilder();
-        while(!st.isEmpty()){
-            ans.append(st.pop());
-        }
+        // StringBuilder ans = new StringBuilder();
+        // while(!st.isEmpty()){
+        //     ans.append(st.pop());
+        // }
 
-        ans.reverse();
+        // ans.reverse();
 
         // handling leading 0`s
         int index = 0;
