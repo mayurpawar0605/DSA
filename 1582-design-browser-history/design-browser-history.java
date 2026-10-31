@@ -18,29 +18,31 @@ class BrowserHistory {
         }
     }
     
+
+
     public String back(int steps) {
         //homepage se back nahi karunga , rest normally back karunga
-        while(steps != 0){
+        while(steps-- != 0){
             if(currHistory.size() > 1){
                 forwardHistory.push(currHistory.pop());
             }else{
                 //we are in homepage back nahi kar sakta
                 break;
             }
-            steps--;
+            // steps--;
         }
         return currHistory.peek();
     }
     
     public String forward(int steps) {
         //agar forward history mai tab hai tab tak forward kar sakta hu
-        while(steps != 0){
+        while(steps-- != 0){
             if(forwardHistory.size() > 0){
                 currHistory.push(forwardHistory.pop());
             }else{
                 break;
             }
-            steps--;
+            // steps--;
         }
         return currHistory.peek();
     }
