@@ -3,7 +3,6 @@ class Solution {
         int[] ans = new int[nums1.length];
         Arrays.fill(ans, -1);
 
-        int index = 0;
         for (int i = 0; i < nums1.length; i++) {
 
             int j = 0;
@@ -12,12 +11,8 @@ class Solution {
                 if (nums1[i] == nums2[j]) {
                     while (j < nums2.length) {
                         if (nums2[j] > nums1[i]) {
-                            ans[index] = nums2[j];
-                            index ++;
+                            ans[i] = nums2[j];
                             break;
-                        }
-                        if(j == nums2.length - 1){
-                            index++;
                         }
                         j++;
                     }
@@ -27,6 +22,7 @@ class Solution {
             }
 
         }
+        
         return ans;
     }
 }
