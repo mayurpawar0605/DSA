@@ -18,7 +18,7 @@ class Solution {
             while(!q.isEmpty() && nums[q.getLast()] < nums[i]){
                 q.removeLast();
             }
-            if(!q.isEmpty() && nums[i-k] >= nums[q.getFirst()]){
+            if(!q.isEmpty() && q.getFirst() <= i-k){
                 q.removeFirst();
             }
             q.addLast(i);
